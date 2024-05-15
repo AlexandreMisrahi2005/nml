@@ -1,0 +1,9 @@
+matplotlib
+networkx
+numpy
+scikit-learn
+scipy
+torch
+torch_geometric
+tqdm
+rdkit
