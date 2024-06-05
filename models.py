@@ -9,9 +9,9 @@ class Baseline(nn.Module):
     def __init__(self, num_features, hidden_dim):
         super(Baseline, self).__init__()
         self.conv1 = GraphConv(num_features, hidden_dim)
-        self.conv2 = GraphConv(hidden_dim, hidden_dim)
-        self.conv3 = GraphConv(hidden_dim, hidden_dim)
-        self.conv4 = GraphConv(hidden_dim, hidden_dim)
+        self.conv2 = GraphConv(hidden_dim, 2 * hidden_dim)
+        self.conv3 = GraphConv(2 * hidden_dim, 3 * hidden_dim)
+        self.conv4 = GraphConv(3 * hidden_dim, hidden_dim)
         self.head = nn.Linear(hidden_dim, 1)
 
     def forward(self, data):
