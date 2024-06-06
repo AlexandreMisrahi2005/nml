@@ -26,26 +26,26 @@ x = [H, C, N, O, F, atomic_number, aromatic, sp, sp2, sp3, num_hs, formal_charge
 bonds = {BT.SINGLE: 0, BT.DOUBLE: 1, BT.TRIPLE: 2, BT.AROMATIC: 3}
 """
 
-# def data_to_mol(data):
-#     mol = Chem.RWMol()
-#     atomic_nums = data.z.tolist()
+def data_to_mol(data):
+    mol = Chem.RWMol()
+    atomic_nums = data.z.tolist()
 
-#     for atomic_num in atomic_nums:
-#         mol.AddAtom(Chem.Atom(atomic_num))
+    for atomic_num in atomic_nums:
+        mol.AddAtom(Chem.Atom(atomic_num))
     
-#     num_bonds = data.edge_index.shape[1]
-#     cache = set()
-#     for i in range(num_bonds):
-#         start = int(data.edge_index[0, i])
-#         end = int(data.edge_index[1, i])
-#         bond_type = int(data.edge_attr[i].tolist()[0])
-#         if (start, end, bond_type) in cache or (end, start, bond_type) in cache:
-#             continue
-#         cache.add((start, end, bond_type))
-#         mol.AddBond(start, end, Chem.rdchem.BondType.values[bond_type])
+    num_bonds = data.edge_index.shape[1]
+    cache = set()
+    for i in range(num_bonds):
+        start = int(data.edge_index[0, i])
+        end = int(data.edge_index[1, i])
+        bond_type = int(data.edge_attr[i].tolist()[0])
+        if (start, end, bond_type) in cache or (end, start, bond_type) in cache:
+            continue
+        cache.add((start, end, bond_type))
+        mol.AddBond(start, end, Chem.rdchem.BondType.values[bond_type])
     
-#     mol = mol.GetMol()  # Convert to Mol object
-#     return mol
+    mol = mol.GetMol()  # Convert to Mol object
+    return mol
 
 # def mol_to_data(mol):
 #     atom_features = [atom.GetAtomicNum() for atom in mol.GetAtoms()]
@@ -102,30 +102,55 @@ class RemoveHydrogens(BaseTransform):
     
 class ExtendAtomFeatures(BaseTransform):
 
+    def __init__(self, with_mol, *args, **kwargs):
+        super(ExtendAtomFeatures, self).__init__()
+        self.with_mol = with_mol
+
     def get_atom_features(self, atom: Chem.Atom) -> list:
         features = []
         features.append(atom.GetFormalCharge())
-        # features.append(atom.GetTotalValence())
-        # features.append(atom.GetDegree())
-        # features.append(atom.GetImplicitValence())
         features.append(rdchem.GetPeriodicTable().GetRcovalent(atom.GetAtomicNum()))
         features.append(rdchem.GetPeriodicTable().GetRvdw(atom.GetAtomicNum()))
-        # features.append(atom.GetChiralTag())
         features.append(atom.GetMass())
         return features
-
+    
+    def get_atom_features_with_mol(self, mol: Chem.Mol) -> list:
+        chiral_tag_to_int = {
+            rdchem.ChiralType.CHI_UNSPECIFIED: [0,0],
+            rdchem.ChiralType.CHI_TETRAHEDRAL_CW: [1,0],
+            rdchem.ChiralType.CHI_TETRAHEDRAL_CCW: [0,1],
+            rdchem.ChiralType.CHI_OTHER: [1,1],
+        }
+        all_features = []
+        Chem.SanitizeMol(mol)
+        for atom in mol.GetAtoms():
+            features = []
+            features.append(atom.GetFormalCharge())
+            features.append(atom.GetTotalValence())
+            features.append(atom.GetDegree())
+            features.append(atom.GetImplicitValence())
+            features.append(rdchem.GetPeriodicTable().GetRcovalent(atom.GetAtomicNum()))
+            features.append(rdchem.GetPeriodicTable().GetRvdw(atom.GetAtomicNum()))
+            features += chiral_tag_to_int.get(atom.GetChiralTag(), [0,0])
+            features.append(atom.GetMass())
+            all_features.append(features)
+        return all_features
 
     def __call__(self, data: Data) -> Data:
-        extended_features = []
-        for i in range(data.x.shape[0]):
-            atom = Chem.Atom(data.z[i].item())
-            features = self.get_atom_features(atom)
-            extended_features.append(features)
+        if self.with_mol:
+            mol = data_to_mol(data)
+            extended_features = self.get_atom_features_with_mol(mol)
+        else:
+            extended_features = []
+            for i in range(data.x.shape[0]):
+                atom = Chem.Atom(data.z[i].item())
+                features = self.get_atom_features(atom)
+                extended_features.append(features)
         data.x = torch.cat((data.x, torch.tensor(extended_features, dtype=torch.float)), dim=1)
         return data
-    
-if __name__ == '__main__':
 
+    
+def test_remove_hydrogens():
     ########## Remove hyrogens example #############
     example_index = 100
 
@@ -145,8 +170,7 @@ if __name__ == '__main__':
     # print("edge_attr", new_example.edge_attr)
     # print("z", new_example.z)
 
-    ###############################################
-
+def test_extend_features(with_mol):
     ########## Extend atom features example #############
     example_index = 100
     dataset = QM9(root='gdb9')
@@ -154,7 +178,21 @@ if __name__ == '__main__':
     # print("x", example.x)
     print(f"dataset[{example_index}]", example)
 
-    dataset_extended = QM9(root='gdb9', transform=ExtendAtomFeatures())
+    dataset_extended = QM9(root='gdb9', transform=ExtendAtomFeatures(with_mol))
     new_example = dataset_extended[example_index]
     print(f"dataset_extended[{example_index}]", new_example)
     # print("x", new_example.x)
+    
+if __name__ == '__main__':
+    print()
+    print("Running tests.")
+    print()
+    print("test_remove_hydrogens()")
+    test_remove_hydrogens()
+    print()
+    print("test_extend_features(with_mol=False)")
+    test_extend_features(with_mol=False)
+    print()
+    print("test_extend_features(with_mol=True)")
+    test_extend_features(with_mol=True)
+    print()

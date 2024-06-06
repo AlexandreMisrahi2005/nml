@@ -4,13 +4,15 @@ import sys
 import matplotlib.pyplot as plt
 import torch
 import torch.nn.functional as F
-print("in 0")
+
+print("Importing torch_geometric...")
 from torch_geometric.datasets import QM9
-print("in 1")
 from torch_geometric.loader import DataLoader
-print("in 2")
+
+print("Loading models...")
 from models import Baseline, GCN, DimeNetModel
 from utils import ExtendAtomFeatures, RemoveHydrogens
+print("Loading trainers...")
 from trainers import baseline_trainer, baseline_eval, pamnet_main
 
 # """
