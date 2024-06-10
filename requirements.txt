@@ -5,7 +5,7 @@ scikit-learn
 scipy
 tqdm
 rdkit
-torch==1.8.0
-# pip install torch_scatter torch_sparse torch_cluster -f https://data.pyg.org/whl/torch-1.8.0+cpu.html
-# pip install torch-geometric==1.7.2
+torch==2.2.2
+torch-geometric
+torch_cluster -f https://data.pyg.org/whl/torch-2.2.0+cpu.html
 git+https://github.com/ildoonet/pytorch-gradual-warmup-lr.git

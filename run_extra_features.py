@@ -5,7 +5,6 @@ import argparse
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
-import torch.nn.functional as F
 
 from torch_geometric.datasets import QM9 as QM9_pyg
 from torch_geometric.loader import DataLoader
@@ -75,10 +74,11 @@ if target not in range(19):
 model_name = "Baseline"    # Baseline DimeNet GraphSAGE GAT PAMNet
 
 batch_size = 32
-num_epochs = 40
+num_epochs = 200
 patience = 20
 hydrogens = True
-extra_atom_features = True   # incompatible with DimeNet and PAMNet
+extra_atom_features = True
+
 pred_dir = './predictions/'
 fig_dir = './figures/'
 if not os.path.exists(pred_dir):
@@ -87,23 +87,18 @@ if not os.path.exists(pred_dir):
 config = {
     "Baseline": {"trainer":baseline_trainer, "model_kwargs":{"hidden_dim":16}, "evaluator":baseline_eval},
     "DimeNet": {"trainer":dimenet_trainer, "model_kwargs":{"hidden_dim":16}, "evaluator":baseline_eval},
-    "GraphSAGE": {"trainer":graphsage_trainer, "model_kwargs":{"hidden_dim":16}, "evaluator":baseline_eval},
-    "GAT": {"trainer":gat_trainer, "model_kwargs":{"hidden_dim":16}, "evaluator":baseline_eval},
     "PAMNet": {"trainer":pamnet_main, "model_kwargs":{}, "evaluator":pamnet_test},
 }
 
 def main(model_name, extra_atom_kwargs=None):
 
+    # get the extra atom kwarg for which the value is True
     if extra_atom_kwargs:
         extra_feature = [key for key, value in extra_atom_kwargs.items() if value]
-        if len(extra_feature) == 1:
-            extra_feature = extra_feature[0]
-        elif len(extra_feature) == 0:
-            extra_feature = "none"
-        elif len(extra_feature) == 8:
-            extra_feature = "all"
+        assert len(extra_feature) == 1
+        extra_feature = extra_feature[0]
 
-    log_file = open(os.path.join(pred_dir, model_name + f'_target_{target}_hydrogens_{hydrogens}_extrafeature_{extra_feature}' + ".txt"), 'a')
+    log_file = open(os.path.join(pred_dir, model_name + f'_target_{target}_extrafeature_{extra_feature}' + ".txt"), 'a')
     print(f"Logging to {log_file.name}")
     normal_std_out = sys.stdout
     sys.stdout = log_file
@@ -119,7 +114,7 @@ def main(model_name, extra_atom_kwargs=None):
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'gdb9')
     transforms = []
     if not hydrogens:
-        transforms.append(RemoveHydrogens(model=model_name))
+        transforms.append(RemoveHydrogens())
     if extra_atom_features:
         transforms.append(ExtendAtomFeatures(with_mol=True, **extra_atom_kwargs))
 
@@ -129,7 +124,7 @@ def main(model_name, extra_atom_kwargs=None):
             data.y = data.y[:, self.target]
             return data
         
-    dataset = QM9_pyg(path, transform=Compose(transforms)).shuffle() if model_name not in ["PAMNet", "PAMNet_s"] else QM9_pamnet(path, transform=Compose([MyTransform()] + transforms)).shuffle()
+    dataset = QM9_pyg(path, transform=Compose(transforms)).shuffle() if model_name not in ["PAMNet", "PAMNet_s"] else QM9_pamnet(path, transform=MyTransform()).shuffle()
 
     train_dataset = dataset[:110000]
     val_dataset = dataset[110000:120000]
@@ -138,9 +133,6 @@ def main(model_name, extra_atom_kwargs=None):
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-
-    print("Random example from the dataset:")
-    print(train_dataset[0])
 
     optimizer = torch.optim.Adam
     trainer = config[model_name]["trainer"]
@@ -154,9 +146,9 @@ def main(model_name, extra_atom_kwargs=None):
                                        verbose=False,
                                        model_kwargs=config[model_name]["model_kwargs"],
                                        )
-    np.save(os.path.join(pred_dir, model_name + f'_target_{target}_hydrogens_{hydrogens}_extrafeature_{extra_feature}' + "_train_losses.npy"), np.array(train_losses))
-    np.save(os.path.join(pred_dir, model_name + f'_target_{target}_hydrogens_{hydrogens}_extrafeature_{extra_feature}' + "_val_losses.npy"), np.array(val_losses))
-    np.save(os.path.join(pred_dir, model_name + f'_target_{target}_hydrogens_{hydrogens}_extrafeature_{extra_feature}' + "_test_loss.npy"), np.array([test_loss]))
+    np.save(os.path.join(pred_dir, model_name + f'_target_{target}_extrafeature_{extra_feature}' + "_train_losses.npy"), np.array(train_losses))
+    np.save(os.path.join(pred_dir, model_name + f'_target_{target}_extrafeature_{extra_feature}' + "_val_losses.npy"), np.array(val_losses))
+    np.save(os.path.join(pred_dir, model_name + f'_target_{target}_extrafeature_{extra_feature}' + "_test_loss.npy"), np.array([test_loss]))
 
     print(f"Final Test Loss: {test_loss:.4f}")
     log_file.close()
@@ -167,24 +159,28 @@ def main(model_name, extra_atom_kwargs=None):
 
 if __name__ == '__main__':
     extra_atom_kwargs = {
-        'formal_charge':True, 
-        'total_valence':True, 
-        'degree':True, 
-        'implicit_valence':True, 
-        'r_covalent':True, 
-        'r_vdw':True, 
-        'chiral_tag':True, 
-        'mass':True,
+        'formal_charge':False, 
+        'total_valence':False, 
+        'degree':False, 
+        'implicit_valence':False, 
+        'r_covalent':False, 
+        'r_vdw':False, 
+        'chiral_tag':False, 
+        'mass':False
     }
+    # for each extra feature create a new run with the corresponding feature set to True
+    for key in extra_atom_kwargs.keys():
+        print(f"Running {model_name} with {key} extra feature")
+        extra_atom_kwargs[key] = True
+        train_losses, val_losses, test_loss = main(model_name, extra_atom_kwargs)
+        extra_atom_kwargs[key] = False
 
-    train_losses, val_losses, test_loss = main(model_name, extra_atom_kwargs)
-
-    plt.plot(train_losses, label="Train Error")
-    plt.plot(val_losses, label="Validation Error")
-    plt.axhline(y=test_loss, color='r', linestyle='-', label="Final Test Error")
-    plt.legend()
-    plt.title(f"{model_name} target {target} hydrogens {hydrogens} implicit valence")
-    plt.xlabel("Epoch")
-    plt.ylabel("Error")
-    plt.savefig(os.path.join(fig_dir, model_name + f'_target_{target}_hydrogens_{hydrogens}_extrafeature_all' + "_losses.png"))
-    # plt.show()
+        plt.plot(train_losses, label="Train Error")
+        plt.plot(val_losses, label="Validation Error")
+        plt.axhline(y=test_loss, color='r', linestyle='-', label="Final Test Error")
+        plt.legend()
+        plt.title(f"{model_name} target {target} hydrogens {hydrogens}")
+        plt.xlabel("Epoch")
+        plt.ylabel("Error")
+        plt.savefig(os.path.join(fig_dir, model_name + f'_target_{target}_extrafeature_{key}' + "_losses.png"))
+        # plt.show()
