@@ -1,0 +1,53 @@
+model = PAMNet
+target = 0
+batch_size = 32
+num_epochs = 200
+patience = 20
+hydrogens = True
+Random example from the dataset:
+Data(x=[21], edge_index=[2, 44], y=[1], pos=[21, 3])
+Number of model parameters:  3581100
+Start training!
+model = PAMNet
+target = 0
+batch_size = 32
+num_epochs = 20
+patience = 20
+hydrogens = True
+Random example from the dataset:
+Data(x=[20], edge_index=[2, 42], y=[1], pos=[20, 3])
+Number of model parameters:  3581100
+Start training!
+model = PAMNet
+target = 0
+batch_size = 32
+num_epochs = 20
+patience = 20
+hydrogens = True
+Random example from the dataset:
+Data(x=[16], edge_index=[2, 32], y=[1], pos=[16, 3])
+Number of model parameters:  3581100
+Start training!
+Epoch: 001, Train MAE: 0.8683481, Val MAE: 0.8309272, Test MAE: 0.8239493
+Epoch: 002, Train MAE: 0.3626547, Val MAE: 0.2642836, Test MAE: 0.2602569
+Epoch: 003, Train MAE: 0.2242476, Val MAE: 0.1571196, Test MAE: 0.1577166
+Epoch: 004, Train MAE: 0.1811341, Val MAE: 0.1257887, Test MAE: 0.1275850
+Epoch: 005, Train MAE: 0.1583202, Val MAE: 0.1087013, Test MAE: 0.1101729
+Epoch: 006, Train MAE: 0.1435137, Val MAE: 0.0978434, Test MAE: 0.0987324
+Epoch: 007, Train MAE: 0.1310909, Val MAE: 0.0890772, Test MAE: 0.0908876
+Epoch: 008, Train MAE: 0.1212677, Val MAE: 0.0829516, Test MAE: 0.0850158
+Epoch: 009, Train MAE: 0.1143383, Val MAE: 0.0783044, Test MAE: 0.0798299
+Epoch: 010, Train MAE: 0.1096493, Val MAE: 0.0742089, Test MAE: 0.0760231
+Epoch: 011, Train MAE: 0.1033587, Val MAE: 0.0705633, Test MAE: 0.0725361
+Epoch: 012, Train MAE: 0.0991100, Val MAE: 0.0683726, Test MAE: 0.0704887
+Epoch: 013, Train MAE: 0.0948211, Val MAE: 0.0659377, Test MAE: 0.0678030
+Epoch: 014, Train MAE: 0.0914389, Val MAE: 0.0640247, Test MAE: 0.0655372
+Epoch: 015, Train MAE: 0.0874646, Val MAE: 0.0624330, Test MAE: 0.0641315
+Epoch: 016, Train MAE: 0.0856031, Val MAE: 0.0610688, Test MAE: 0.0626661
+Epoch: 017, Train MAE: 0.0828778, Val MAE: 0.0598314, Test MAE: 0.0609779
+Epoch: 018, Train MAE: 0.0797841, Val MAE: 0.0585715, Test MAE: 0.0594144
+Epoch: 019, Train MAE: 0.0784799, Val MAE: 0.0572128, Test MAE: 0.0583153
+Epoch: 020, Train MAE: 0.0758756, Val MAE: 0.0560411, Test MAE: 0.0576040
+Best Validation MAE: 0.05604106217622757
+Testing MAE: 0.057604026066916836
+Final Test Loss: 0.0576

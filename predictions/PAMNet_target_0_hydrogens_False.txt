@@ -1,0 +1,92 @@
+model = PAMNet
+target = 0
+batch_size = 32
+num_epochs = 200
+patience = 20
+hydrogens = False
+Random example from the dataset:
+Data(x=[9], edge_index=[2, 18], y=[1], pos=[9, 3])
+Number of model parameters:  3581100
+Start training!
+model = PAMNet
+target = 0
+batch_size = 32
+num_epochs = 20
+patience = 20
+hydrogens = False
+Random example from the dataset:
+Data(x=[9], edge_index=[2, 18], y=[1], pos=[9, 3])
+Number of model parameters:  3581100
+Start training!
+DataBatch(x=[286], edge_index=[2, 600], y=[32], pos=[286, 3], batch=[286], ptr=[33])
+DataBatch(x=[280], edge_index=[2, 606], y=[32], pos=[280, 3], batch=[280], ptr=[33])
+DataBatch(x=[283], edge_index=[2, 602], y=[32], pos=[283, 3], batch=[283], ptr=[33])
+DataBatch(x=[288], edge_index=[2, 618], y=[32], pos=[288, 3], batch=[288], ptr=[33])
+DataBatch(x=[283], edge_index=[2, 608], y=[32], pos=[283, 3], batch=[283], ptr=[33])
+DataBatch(x=[278], edge_index=[2, 594], y=[32], pos=[278, 3], batch=[278], ptr=[33])
+DataBatch(x=[286], edge_index=[2, 606], y=[32], pos=[286, 3], batch=[286], ptr=[33])
+DataBatch(x=[280], edge_index=[2, 590], y=[32], pos=[280, 3], batch=[280], ptr=[33])
+DataBatch(x=[278], edge_index=[2, 614], y=[32], pos=[278, 3], batch=[278], ptr=[33])
+DataBatch(x=[279], edge_index=[2, 598], y=[32], pos=[279, 3], batch=[279], ptr=[33])
+DataBatch(x=[281], edge_index=[2, 600], y=[32], pos=[281, 3], batch=[281], ptr=[33])
+DataBatch(x=[278], edge_index=[2, 590], y=[32], pos=[278, 3], batch=[278], ptr=[33])
+Failed samples:  12
+model = PAMNet
+target = 0
+batch_size = 32
+num_epochs = 20
+patience = 20
+hydrogens = False
+Random example from the dataset:
+Data(x=[9], edge_index=[2, 22], y=[1], pos=[9, 3])
+Number of model parameters:  3581100
+Start training!
+DataBatch(x=[277], edge_index=[2, 604], y=[32], pos=[277, 3], batch=[277], ptr=[33])
+DataBatch(x=[280], edge_index=[2, 618], y=[32], pos=[280, 3], batch=[280], ptr=[33])
+DataBatch(x=[281], edge_index=[2, 594], y=[32], pos=[281, 3], batch=[281], ptr=[33])
+DataBatch(x=[283], edge_index=[2, 598], y=[32], pos=[283, 3], batch=[283], ptr=[33])
+DataBatch(x=[284], edge_index=[2, 610], y=[32], pos=[284, 3], batch=[284], ptr=[33])
+DataBatch(x=[281], edge_index=[2, 620], y=[32], pos=[281, 3], batch=[281], ptr=[33])
+DataBatch(x=[284], edge_index=[2, 600], y=[32], pos=[284, 3], batch=[284], ptr=[33])
+DataBatch(x=[283], edge_index=[2, 600], y=[32], pos=[283, 3], batch=[283], ptr=[33])
+DataBatch(x=[286], edge_index=[2, 602], y=[32], pos=[286, 3], batch=[286], ptr=[33])
+DataBatch(x=[281], edge_index=[2, 602], y=[32], pos=[281, 3], batch=[281], ptr=[33])
+Failed samples:  10
+DataBatch(x=[285], edge_index=[2, 606], y=[32], pos=[285, 3], batch=[285], ptr=[33])
+DataBatch(x=[283], edge_index=[2, 600], y=[32], pos=[283, 3], batch=[283], ptr=[33])
+Epoch: 001, Train MAE: 43936465016126927607431168.0000000, Val MAE: 0.9152931, Test MAE: 0.9020822
+DataBatch(x=[284], edge_index=[2, 604], y=[32], pos=[284, 3], batch=[284], ptr=[33])
+DataBatch(x=[278], edge_index=[2, 586], y=[32], pos=[278, 3], batch=[278], ptr=[33])
+model = PAMNet
+target = 0
+batch_size = 32
+num_epochs = 20
+patience = 20
+hydrogens = False
+Random example from the dataset:
+Data(x=[9], edge_index=[2, 20], y=[1], pos=[9, 3])
+Number of model parameters:  3581100
+Start training!
+model = PAMNet
+target = 0
+batch_size = 32
+num_epochs = 10
+patience = 20
+hydrogens = False
+Random example from the dataset:
+Data(x=[9], edge_index=[2, 20], y=[1], pos=[9, 3])
+Number of model parameters:  3581100
+Start training!
+Epoch: 001, Train MAE: 0.8680121, Val MAE: 0.8281882, Test MAE: 0.8335201
+Epoch: 002, Train MAE: 0.5044339, Val MAE: 0.4039848, Test MAE: 0.4110628
+Epoch: 003, Train MAE: 0.3717048, Val MAE: 0.2950486, Test MAE: 0.3030752
+Epoch: 004, Train MAE: 0.3080852, Val MAE: 0.2412660, Test MAE: 0.2510723
+Epoch: 005, Train MAE: 0.2673795, Val MAE: 0.2103086, Test MAE: 0.2164347
+Epoch: 006, Train MAE: 0.2370041, Val MAE: 0.1902195, Test MAE: 0.1942415
+Epoch: 007, Train MAE: 0.2154060, Val MAE: 0.1739939, Test MAE: 0.1761384
+Epoch: 008, Train MAE: 0.1980023, Val MAE: 0.1623869, Test MAE: 0.1641202
+Epoch: 009, Train MAE: 0.1839734, Val MAE: 0.1540073, Test MAE: 0.1561472
+Epoch: 010, Train MAE: 0.1728263, Val MAE: 0.1473665, Test MAE: 0.1480262
+Best Validation MAE: 0.14736649396419524
+Testing MAE: 0.14802619461295194
+Final Test Loss: 0.1480

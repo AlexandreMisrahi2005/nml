@@ -1,0 +1,76 @@
+model = Baseline
+target = 0
+batch_size = 32
+num_epochs = 1
+patience = 20
+hydrogens = True
+Random example from the dataset:
+Data(x=[19, 20], edge_index=[2, 40], edge_attr=[40, 4], y=[1, 19], pos=[19, 3], idx=[1], name='gdb_80461', z=[19])
+Number of model parameters:  6401
+Epoch 1     Train Loss 5.5868    Validation Loss: 1.8611
+
+
+Final Test Loss: 1.8863
+model = Baseline
+target = 0
+batch_size = 32
+num_epochs = 200
+patience = 20
+hydrogens = True
+Random example from the dataset:
+Data(x=[17, 20], edge_index=[2, 34], edge_attr=[34, 4], y=[1, 19], pos=[17, 3], idx=[1], name='gdb_74126', z=[17])
+Number of model parameters:  6401
+Epoch 1     Train Loss 0.9134    Validation Loss: 0.8377
+model = Baseline
+target = 0
+batch_size = 32
+num_epochs = 40
+patience = 20
+hydrogens = True
+Random example from the dataset:
+Data(x=[18, 20], edge_index=[2, 36], edge_attr=[36, 4], y=[1, 19], pos=[18, 3], idx=[1], name='gdb_103002', z=[18])
+Number of model parameters:  6401
+Epoch 1     Train Loss 0.8985    Validation Loss: 0.8570
+Epoch 2     Train Loss 0.8448    Validation Loss: 0.8395
+Epoch 3     Train Loss 0.8372    Validation Loss: 0.8379
+Epoch 4     Train Loss 0.8329    Validation Loss: 0.8207
+Epoch 5     Train Loss 0.8334    Validation Loss: 0.8619
+Epoch 6     Train Loss 0.8284    Validation Loss: 0.8154
+Epoch 7     Train Loss 0.8303    Validation Loss: 0.8263
+Epoch 8     Train Loss 0.8267    Validation Loss: 0.8488
+Epoch 9     Train Loss 0.8275    Validation Loss: 0.8356
+Epoch 10     Train Loss 0.8282    Validation Loss: 0.8506
+Epoch 11     Train Loss 0.8290    Validation Loss: 0.8127
+Epoch 12     Train Loss 0.8275    Validation Loss: 0.8282
+Epoch 13     Train Loss 0.8268    Validation Loss: 0.8348
+Epoch 14     Train Loss 0.8280    Validation Loss: 0.8214
+Epoch 15     Train Loss 0.8284    Validation Loss: 0.8268
+Epoch 16     Train Loss 0.8272    Validation Loss: 0.8222
+Epoch 17     Train Loss 0.8289    Validation Loss: 0.8304
+Epoch 18     Train Loss 0.8283    Validation Loss: 0.8219
+Epoch 19     Train Loss 0.8265    Validation Loss: 0.8385
+Epoch 20     Train Loss 0.8276    Validation Loss: 0.8652
+Epoch 21     Train Loss 0.8329    Validation Loss: 0.8372
+Epoch 22     Train Loss 0.8249    Validation Loss: 0.8245
+Epoch 23     Train Loss 0.8275    Validation Loss: 0.8338
+Epoch 24     Train Loss 0.8266    Validation Loss: 0.8777
+Epoch 25     Train Loss 0.8294    Validation Loss: 0.8253
+Epoch 26     Train Loss 0.8282    Validation Loss: 0.8407
+Epoch 27     Train Loss 0.8308    Validation Loss: 0.8215
+Epoch 28     Train Loss 0.8271    Validation Loss: 0.8222
+Epoch 29     Train Loss 0.8266    Validation Loss: 0.9264
+Epoch 30     Train Loss 0.8284    Validation Loss: 0.8341
+Epoch 31     Train Loss 0.8251    Validation Loss: 0.8212
+Epoch 32     Train Loss 0.8284    Validation Loss: 0.8193
+Epoch 33     Train Loss 0.8283    Validation Loss: 0.8301
+Epoch 34     Train Loss 0.8400    Validation Loss: 0.8292
+Epoch 35     Train Loss 0.8237    Validation Loss: 0.8461
+Epoch 36     Train Loss 0.8255    Validation Loss: 0.8275
+Epoch 37     Train Loss 0.8242    Validation Loss: 0.8291
+Epoch 38     Train Loss 0.8249    Validation Loss: 0.8611
+Epoch 39     Train Loss 0.8237    Validation Loss: 0.8389
+Epoch 40     Train Loss 0.8338    Validation Loss: 0.8557
+!!! Early Stopping !!!
+
+
+Final Test Loss: 0.8346

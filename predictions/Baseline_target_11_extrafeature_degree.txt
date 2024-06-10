@@ -1,0 +1,52 @@
+model = Baseline
+target = 11
+batch_size = 32
+num_epochs = 200
+patience = 20
+hydrogens = True
+Number of model parameters:  6145
+Epoch 1     Train Loss 1.9519    Validation Loss: 2.2520
+Epoch 2     Train Loss 1.4872    Validation Loss: 1.7047
+Epoch 3     Train Loss 1.4511    Validation Loss: 1.6452
+Epoch 4     Train Loss 1.4411    Validation Loss: 1.6041
+Epoch 5     Train Loss 1.4143    Validation Loss: 1.3153
+Epoch 6     Train Loss 1.4195    Validation Loss: 1.3591
+Epoch 7     Train Loss 1.4028    Validation Loss: 1.4419
+Epoch 8     Train Loss 1.3906    Validation Loss: 1.3501
+Epoch 9     Train Loss 1.3870    Validation Loss: 1.3035
+Epoch 10     Train Loss 1.3813    Validation Loss: 1.4854
+Epoch 11     Train Loss 1.3848    Validation Loss: 1.2923
+Epoch 12     Train Loss 1.3804    Validation Loss: 1.3595
+Epoch 13     Train Loss 1.3770    Validation Loss: 1.2901
+Epoch 14     Train Loss 1.3792    Validation Loss: 1.3343
+Epoch 15     Train Loss 1.3701    Validation Loss: 1.2860
+Epoch 16     Train Loss 1.3752    Validation Loss: 1.2954
+Epoch 17     Train Loss 1.3720    Validation Loss: 1.2972
+Epoch 18     Train Loss 1.3587    Validation Loss: 1.3291
+Epoch 19     Train Loss 1.3651    Validation Loss: 1.4540
+Epoch 20     Train Loss 1.3646    Validation Loss: 1.4270
+Epoch 21     Train Loss 1.3564    Validation Loss: 1.2881
+Epoch 22     Train Loss 1.3621    Validation Loss: 1.2972
+Epoch 23     Train Loss 1.3592    Validation Loss: 1.3014
+Epoch 24     Train Loss 1.3620    Validation Loss: 1.2928
+Epoch 25     Train Loss 1.3576    Validation Loss: 1.4117
+Epoch 26     Train Loss 1.3587    Validation Loss: 1.3176
+Epoch 27     Train Loss 1.3602    Validation Loss: 1.6955
+Epoch 28     Train Loss 1.3685    Validation Loss: 1.3131
+Epoch 29     Train Loss 1.3546    Validation Loss: 1.2883
+Epoch 30     Train Loss 1.3570    Validation Loss: 1.4824
+Epoch 31     Train Loss 1.3514    Validation Loss: 1.2964
+Epoch 32     Train Loss 1.3530    Validation Loss: 1.3111
+Epoch 33     Train Loss 1.3544    Validation Loss: 1.2874
+Epoch 34     Train Loss 1.3547    Validation Loss: 1.3056
+Epoch 35     Train Loss 1.3602    Validation Loss: 1.2850
+Epoch 36     Train Loss 1.3517    Validation Loss: 1.5930
+Epoch 37     Train Loss 1.3514    Validation Loss: 1.3101
+Epoch 38     Train Loss 1.3501    Validation Loss: 1.4129
+Epoch 39     Train Loss 1.3442    Validation Loss: 1.2837
+Epoch 40     Train Loss 1.3491    Validation Loss: 1.2979
+Epoch 41     Train Loss 1.3515    Validation Loss: 1.3125
+!!! Early Stopping !!!
+
+
+Final Test Loss: 1.2620

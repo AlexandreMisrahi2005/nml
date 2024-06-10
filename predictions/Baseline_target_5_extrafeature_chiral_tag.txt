@@ -1,0 +1,57 @@
+model = Baseline
+target = 5
+batch_size = 32
+num_epochs = 200
+patience = 20
+hydrogens = True
+Number of model parameters:  6177
+Epoch 1     Train Loss 157.1470    Validation Loss: 127.1066
+Epoch 2     Train Loss 130.8741    Validation Loss: 137.7557
+Epoch 3     Train Loss 124.3253    Validation Loss: 124.1553
+Epoch 4     Train Loss 118.7029    Validation Loss: 110.4265
+Epoch 5     Train Loss 113.0456    Validation Loss: 109.4386
+Epoch 6     Train Loss 109.7029    Validation Loss: 104.8465
+Epoch 7     Train Loss 106.9690    Validation Loss: 100.4438
+Epoch 8     Train Loss 104.3240    Validation Loss: 100.3400
+Epoch 9     Train Loss 102.2213    Validation Loss: 96.3283
+Epoch 10     Train Loss 100.6040    Validation Loss: 101.0438
+Epoch 11     Train Loss 99.8020    Validation Loss: 107.6558
+Epoch 12     Train Loss 98.3695    Validation Loss: 91.5727
+Epoch 13     Train Loss 97.5984    Validation Loss: 97.4946
+Epoch 14     Train Loss 96.4369    Validation Loss: 94.0597
+Epoch 15     Train Loss 95.7686    Validation Loss: 94.0989
+Epoch 16     Train Loss 95.4741    Validation Loss: 101.7414
+Epoch 17     Train Loss 94.0268    Validation Loss: 93.7290
+Epoch 18     Train Loss 93.6182    Validation Loss: 94.0096
+Epoch 19     Train Loss 92.7032    Validation Loss: 85.8998
+Epoch 20     Train Loss 91.3189    Validation Loss: 91.3379
+Epoch 21     Train Loss 91.3410    Validation Loss: 90.5618
+Epoch 22     Train Loss 90.3089    Validation Loss: 87.4478
+Epoch 23     Train Loss 89.8764    Validation Loss: 91.0010
+Epoch 24     Train Loss 88.8900    Validation Loss: 91.2707
+Epoch 25     Train Loss 89.0145    Validation Loss: 105.1662
+Epoch 26     Train Loss 88.4628    Validation Loss: 83.9664
+Epoch 27     Train Loss 87.6567    Validation Loss: 82.5304
+Epoch 28     Train Loss 87.6666    Validation Loss: 85.9563
+Epoch 29     Train Loss 87.2129    Validation Loss: 81.1457
+Epoch 30     Train Loss 87.0831    Validation Loss: 85.3488
+Epoch 31     Train Loss 86.7373    Validation Loss: 84.7467
+Epoch 32     Train Loss 86.7234    Validation Loss: 85.1194
+Epoch 33     Train Loss 86.0611    Validation Loss: 82.2750
+Epoch 34     Train Loss 87.0298    Validation Loss: 82.7221
+Epoch 35     Train Loss 85.8763    Validation Loss: 80.6230
+Epoch 36     Train Loss 85.1301    Validation Loss: 87.2020
+Epoch 37     Train Loss 85.2990    Validation Loss: 81.3434
+Epoch 38     Train Loss 85.0607    Validation Loss: 86.7832
+Epoch 39     Train Loss 84.2964    Validation Loss: 82.7722
+Epoch 40     Train Loss 84.5465    Validation Loss: 80.5866
+Epoch 41     Train Loss 84.4963    Validation Loss: 84.4384
+Epoch 42     Train Loss 84.0327    Validation Loss: 85.4419
+Epoch 43     Train Loss 83.8458    Validation Loss: 83.6466
+Epoch 44     Train Loss 83.6309    Validation Loss: 80.4021
+Epoch 45     Train Loss 83.8449    Validation Loss: 78.6086
+Epoch 46     Train Loss 83.3404    Validation Loss: 82.5044
+!!! Early Stopping !!!
+
+
+Final Test Loss: 79.6148

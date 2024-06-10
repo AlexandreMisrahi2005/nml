@@ -1,0 +1,43 @@
+model = PAMNet
+target = 11
+batch_size = 32
+num_epochs = 200
+patience = 20
+hydrogens = True
+Random example from the dataset:
+Data(x=[11], edge_index=[2, 22], y=[1], pos=[11, 3])
+Number of model parameters:  3581100
+Start training!
+model = PAMNet
+target = 11
+batch_size = 32
+num_epochs = 20
+patience = 20
+hydrogens = True
+Random example from the dataset:
+Data(x=[18], edge_index=[2, 40], y=[1], pos=[18, 3])
+Number of model parameters:  3581100
+Start training!
+Epoch: 001, Train MAE: 2.2940589, Val MAE: 1.7736970, Test MAE: 1.7762666
+Epoch: 002, Train MAE: 0.2783749, Val MAE: 0.2019088, Test MAE: 0.2048732
+Epoch: 003, Train MAE: 0.1930826, Val MAE: 0.1117990, Test MAE: 0.1125747
+Epoch: 004, Train MAE: 0.1533554, Val MAE: 0.0853123, Test MAE: 0.0864588
+Epoch: 005, Train MAE: 0.1287200, Val MAE: 0.0720500, Test MAE: 0.0727358
+Epoch: 006, Train MAE: 0.1153490, Val MAE: 0.0632329, Test MAE: 0.0639590
+Epoch: 007, Train MAE: 0.1029284, Val MAE: 0.0575603, Test MAE: 0.0581007
+Epoch: 008, Train MAE: 0.0954577, Val MAE: 0.0530863, Test MAE: 0.0536737
+Epoch: 009, Train MAE: 0.0883070, Val MAE: 0.0498363, Test MAE: 0.0499828
+Epoch: 010, Train MAE: 0.0847860, Val MAE: 0.0474367, Test MAE: 0.0473842
+Epoch: 011, Train MAE: 0.0806665, Val MAE: 0.0450372, Test MAE: 0.0449417
+Epoch: 012, Train MAE: 0.0756912, Val MAE: 0.0432608, Test MAE: 0.0428731
+Epoch: 013, Train MAE: 0.0725603, Val MAE: 0.0417456, Test MAE: 0.0414825
+Epoch: 014, Train MAE: 0.0699130, Val MAE: 0.0402879, Test MAE: 0.0399715
+Epoch: 015, Train MAE: 0.0682789, Val MAE: 0.0388006, Test MAE: 0.0386946
+Epoch: 016, Train MAE: 0.0657958, Val MAE: 0.0380749, Test MAE: 0.0377987
+Epoch: 017, Train MAE: 0.0626797, Val MAE: 0.0371183, Test MAE: 0.0367475
+Epoch: 018, Train MAE: 0.0599070, Val MAE: 0.0361412, Test MAE: 0.0358574
+Epoch: 019, Train MAE: 0.0595584, Val MAE: 0.0356014, Test MAE: 0.0352553
+Epoch: 020, Train MAE: 0.0563252, Val MAE: 0.0348050, Test MAE: 0.0344353
+Best Validation MAE: 0.034805046081542966
+Testing MAE: 0.03443528203442094
+Final Test Loss: 0.0344
